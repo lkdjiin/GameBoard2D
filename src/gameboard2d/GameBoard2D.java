@@ -5,7 +5,7 @@ import gameboard2d.box.Box;
 import gameboard2d.piece.Piece;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import javax.swing.JPanel;
 
@@ -21,15 +21,13 @@ public class GameBoard2D extends JPanel {
 
     /**
      * Create a GameBoard2D you can use throughout your project.
-     * @param boardFilename the name of the image of the board
-     * @param cacheFilename the name of the image of the board's cache
+     * @param boardFile the image of the board
+     * @param cacheFile the image of the board's cache
      * @param dimension the dimension of the board
      * @throws IOException if a file doesn't exist (or is unreadable, ...)
-     * @todo Remplacer les String par des File.
-     * @todo Ne pas passer les dimensions, on peut retrouver ça depuis l'image.
      */
-    public GameBoard2D(String boardFilename, String cacheFilename, Dimension dimension) throws IOException {
-        board = new Board(boardFilename, cacheFilename);
+    public GameBoard2D(File boardFile, File cacheFile, Dimension dimension) throws IOException {
+        board = new Board(boardFile, cacheFile);
         setSize(dimension);
         pieces = new HashMap<String, Piece>();
         offscreenImage = new BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_ARGB);
@@ -51,12 +49,11 @@ public class GameBoard2D extends JPanel {
      * need to add EVERY pieces of your game. For example, in a chess game, you should add only
      * one "white pawn", not eigth.
      * @param name the name of the piece. You will retrieve the piece by its name.
-     * @param filename the name of the image of the piece
+     * @param file the image of the piece
      * @throws IOException if the file doesn't exist (or is unreadable, ...)
-     * @todo remplacer String par File
      */
-    public void addPiece(String name, String filename) throws IOException {
-        pieces.put(name, new Piece(filename));
+    public void addPiece(String name, File file) throws IOException {
+        pieces.put(name, new Piece(file));
     }
 
     @Override

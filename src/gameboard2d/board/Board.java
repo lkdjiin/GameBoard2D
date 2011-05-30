@@ -15,21 +15,18 @@ public class Board {
 
     private BufferedImage boardImage;
     private BufferedImage cacheImage;
-    protected ArrayList<CacheBox> cacheBoxes;
     protected HashMap<Integer, Box> boxes;
 
     /**
      * Sole constructor.
-     * @param boardFilename the name of the image of the board
-     * @param cacheFilename the name of the image of the board's cache
+     * @param boardFile the image of the board
+     * @param cacheFile the image of the board's cache
      * @throws IOException if a file doesn't exist (or is unreadable, ...)
-     * @todo Remplacer les String par des File.
      */
-    public Board(String boardFilename, String cacheFilename) throws IOException {
-        cacheBoxes = new ArrayList<CacheBox>();
+    public Board(File boardFile, File cacheFile) throws IOException {
         boxes = new HashMap<Integer, Box>();
-        boardImage = ImageIO.read(new File(boardFilename));
-        cacheImage = ImageIO.read(new File(cacheFilename));
+        boardImage = ImageIO.read(boardFile);
+        cacheImage = ImageIO.read(cacheFile);
     }
 
     /**
@@ -44,8 +41,7 @@ public class Board {
      * @todo cache must be uniq: check it !
      */
     public void addBox(int id, Color cache, Point reference, Dimension d) {
-        cacheBoxes.add(new CacheBox(id, cache));
-        boxes.put(id, new Box(reference, d));
+        boxes.put(id, new Box(reference, cache, d));
     }
 
     /**
@@ -79,9 +75,10 @@ public class Board {
 
     private Integer cellFromColor(Color color) {
         Integer ret = null;
-        for(CacheBox cc : cacheBoxes) {
-            if(cc.color.equals(color)) {
-                ret = cc.id;
+        for(Map.Entry<Integer, Box> e : boxes.entrySet()) {
+            Box box = e.getValue();
+            if(box.cacheColor.equals(color)) {
+                ret = e.getKey();
             }
         }
         return ret;

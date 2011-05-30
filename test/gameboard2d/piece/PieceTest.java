@@ -1,6 +1,6 @@
 package gameboard2d.piece;
 
-import java.io.IOException;
+import java.io.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,7 +31,7 @@ public class PieceTest {
 
     @Test(expected= IOException.class)
     public void testMustThrowIOExceptionIfFileDontExist() throws IOException {
-        Piece p = new Piece("test/images/unknown.png");
+        Piece p = new Piece(new File("test/images/unknown.png"));
     }
 
 }

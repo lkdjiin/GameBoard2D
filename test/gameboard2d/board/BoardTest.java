@@ -1,11 +1,8 @@
 package gameboard2d.board;
 
-import java.awt.Dimension;
-import gameboard2d.box.Box;
-import java.awt.Point;
-import gameboard2d.box.CacheBox;
-import java.awt.Color;
-import java.io.IOException;
+import java.io.*;
+import java.awt.*;
+import gameboard2d.box.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,7 +27,7 @@ public class BoardTest {
 
     @Before
     public void setUp() throws IOException {
-        board = new Board("test/images/ttt-board.png", "test/images/ttt-board-cache.png");
+        board = new Board(new File("test/images/ttt-board.png"), new File("test/images/ttt-board-cache.png"));
     }
 
     @After
@@ -51,26 +48,25 @@ public class BoardTest {
 
     @Test(expected= IOException.class)
     public void testMustThrowIOExceptionIfBoardFileDontExist() throws IOException {
-        Board board1 = new Board("test/images/unknown.png", "test/images/ttt-board-cache.png");
+        Board board1 = new Board(new File("test/images/unknown.png"), new File("test/images/ttt-board-cache.png"));
     }
 
     @Test(expected= IOException.class)
     public void testMustThrowIOExceptionIfCacheFileDontExist() throws IOException {
-        Board board1 = new Board("test/images/ttt-board.png", "test/images/unknown.png");
+        Board board1 = new Board(new File("test/images/ttt-board.png"), new File("test/images/unknown.png"));
     }
 
     @Test(expected= IOException.class)
     public void testMustThrowIOExceptionIfBadPath() throws IOException {
-        Board board1 = new Board("bad/path/ttt-board.png", "test/images/ttt-board-cache.png");
+        Board board1 = new Board(new File("bad/path/ttt-board.png"), new File("test/images/ttt-board-cache.png"));
     }
 
     @Test
     public void testAddCell() {
-        CacheBox cc = new CacheBox(123, new Color(0, 1, 2));
+        Box box = new Box(new Point(0,0), new Color(0, 1, 2), new Dimension(100,100));
         board.addBox(123, new Color(0, 1, 2), new Point(0,0), new Dimension(100,100));
-        assertTrue(board.cacheBoxes.contains(cc));
         assertTrue(board.boxes.containsKey(123));
-        assertTrue(board.boxes.containsValue(new Box(new Point(0,0), new Dimension(100,100))));
+        assertTrue(board.boxes.containsValue(new Box(new Point(0,0), new Color(0, 1, 2), new Dimension(100,100))));
     }
 
     @Test

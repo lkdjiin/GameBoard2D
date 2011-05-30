@@ -19,8 +19,8 @@ public class Piece {
      * @param filename the name of the image of the piece
      * @throws IOException if a file doesn't exist (or is unreadable, ...)
      */
-    public Piece(String filename) throws IOException {
-        image = ImageIO.read(new File(filename));
+    public Piece(File file) throws IOException {
+        image = ImageIO.read(file);
     }
 
 
