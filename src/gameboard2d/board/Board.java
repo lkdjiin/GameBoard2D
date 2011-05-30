@@ -58,11 +58,11 @@ public class Board {
      */
     public int getBoxId(Point point) {
         Color c = colorOfPoint(point);
-        Integer cell = cellFromColor(c);
-        if(cell == null) {
+        Integer id = boxIdFromColor(c);
+        if(id == null) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        return cell;
+        return id;
     }
 
     private Color colorOfPoint(Point point) {
@@ -73,7 +73,7 @@ public class Board {
         return new Color(red, green, blue);
     }
 
-    private Integer cellFromColor(Color color) {
+    private Integer boxIdFromColor(Color color) {
         Integer ret = null;
         for(Map.Entry<Integer, Box> e : boxes.entrySet()) {
             Box box = e.getValue();
