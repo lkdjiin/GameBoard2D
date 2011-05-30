@@ -36,7 +36,7 @@ public class Board {
      * @param reference the coordinates of the point that references this box.
      * @param d the dimension of this box area
      * @throws IllegalArgumentException if the id or the cache color already exists
-     * @todo explain concept of "cache area" and "reference point"
+     * @see Box "What is a Box for the GameBoard2D library ?"
      * @todo think hard: I don't want a dimension for a box !
      */
     public void addBox(int id, Color cache, Point reference, Dimension d) {
@@ -44,7 +44,7 @@ public class Board {
             throw new IllegalArgumentException("Duplicated id");
         }
         for(Box e : boxes.values()) {
-            if(e.cacheColor.equals(cache)) {
+            if(e.getCacheColor().equals(cache)) {
                 throw new IllegalArgumentException("Duplicated cache color");
             }
         }
@@ -85,7 +85,7 @@ public class Board {
         Integer ret = null;
         for(Map.Entry<Integer, Box> e : boxes.entrySet()) {
             Box box = e.getValue();
-            if(box.cacheColor.equals(color)) {
+            if(box.getCacheColor().equals(color)) {
                 ret = e.getKey();
             }
         }

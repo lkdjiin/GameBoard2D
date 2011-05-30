@@ -103,7 +103,7 @@ public class BoardTest {
     public void testGetBox() {
         board.addBox(123, new Color(0, 1, 2), new Point(0,0), new Dimension(100,100));
         Box box = board.getBox(123);
-        assertEquals(new Color(0, 1, 2), box.cacheColor);
-        assertEquals(new Point(0,0), box.point);
+        assertEquals(new Color(0, 1, 2), box.getCacheColor());
+        assertEquals(new Point(0,0), box.getPoint());
     }
 }

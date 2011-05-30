@@ -96,10 +96,10 @@ public class GameBoard2D extends JPanel {
         Graphics2D g = offscreenImage.createGraphics();
         BufferedImage background = board.getImage();
         Box cell = board.getBox(boxNumber);
-        int x1 = cell.point.x;
-        int y1 = cell.point.y;
-        int x2 = x1 + cell.dimension.width;
-        int y2 = y1 + cell.dimension.height;
+        int x1 = cell.getPoint().x;
+        int y1 = cell.getPoint().y;
+        int x2 = x1 + cell.getDimension().width;
+        int y2 = y1 + cell.getDimension().height;
         g.drawImage(background, x1, y1, x2, y2, x1, y1, x2, y2, null);
 
         BufferedImage piece = pieces.get(name).image;
