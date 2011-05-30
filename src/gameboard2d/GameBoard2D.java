@@ -17,7 +17,7 @@ public class GameBoard2D extends JPanel {
 
     private BufferedImage offscreenImage;
     private Board board;
-    private HashMap<String, Piece> pieces;
+    protected HashMap<String, Piece> pieces;
 
     /**
      * Create a GameBoard2D you can use throughout your project.

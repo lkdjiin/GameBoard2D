@@ -1,6 +1,5 @@
-package gameboard2d.piece;
+package gameboard2d;
 
-import java.io.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,9 +7,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PieceTest {
+public class ApplicationVersionTest {
 
-    public PieceTest() {
+    public ApplicationVersionTest() {
     }
 
     @BeforeClass
@@ -29,15 +28,9 @@ public class PieceTest {
     public void tearDown() {
     }
 
-    @Test(expected= IOException.class)
-    public void testMustThrowIOExceptionIfFileDontExist() throws IOException {
-        Piece p = new Piece(new File("test/images/unknown.png"));
-    }
-
     @Test
-    public void testMustHaveAccessToImage() throws IOException {
-        Piece p = new Piece(new File("test/images/circle.png"));
-        assertNotNull(p);
+    public void testSomeMethod() {
+        assertEquals(String.class, ApplicationVersion.VERSION.getClass());
     }
 
 }

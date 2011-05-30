@@ -62,7 +62,7 @@ public class BoardTest {
     }
 
     @Test
-    public void testAddCell() {
+    public void testAddBox() {
         Box box = new Box(new Point(0,0), new Color(0, 1, 2), new Dimension(100,100));
         board.addBox(123, new Color(0, 1, 2), new Point(0,0), new Dimension(100,100));
         assertTrue(board.boxes.containsKey(123));
@@ -70,15 +70,28 @@ public class BoardTest {
     }
 
     @Test
-    public void testGetCellNumber() {
+    public void testGetBoxId() {
         initializeCache();
         int cell = board.getBoxId(new Point(150, 150));
         assertEquals(4, cell);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void testGetCellNumberThatDontExist() {
+    public void testGetBoxIdThatDontExist() {
         initializeCache();
         int cell = board.getBoxId(new Point(400, 400));
+    }
+
+    @Test
+    public void testGetImage() {
+        assertNotNull(board.getImage());
+    }
+
+    @Test
+    public void testGetBox() {
+        board.addBox(123, new Color(0, 1, 2), new Point(0,0), new Dimension(100,100));
+        Box box = board.getBox(123);
+        assertEquals(new Color(0, 1, 2), box.cacheColor);
+        assertEquals(new Point(0,0), box.point);
     }
 }

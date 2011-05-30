@@ -55,6 +55,7 @@ public class Board {
      * Return the id of the box that is pointed to by point.
      * @param point the coordinate of the point for which you want to know the box's id.
      * @return the box's id
+     * @throws ArrayIndexOutOfBoundsException if the point is out of the board
      */
     public int getBoxId(Point point) {
         Color c = colorOfPoint(point);
@@ -89,8 +90,8 @@ public class Board {
      * @param id the box you want
      * @return a box
      */
-    public Box getBox(int number) {
-        return boxes.get(number);
+    public Box getBox(int id) {
+        return boxes.get(id);
     }
 
 }
