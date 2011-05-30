@@ -83,6 +83,7 @@ public class GameBoard2D extends JPanel {
     /**
      * Display the board, without any pieces.
      * Useful to initialize your screen.
+     * @todo rename to drawBoard
      */
     public void displayBoard() {
         Graphics2D g = offscreenImage.createGraphics();
@@ -94,7 +95,7 @@ public class GameBoard2D extends JPanel {
      * Display a piece on the board.
      * @param name the name of the piece to display
      * @param cellNumber the cell in wich to display the piece
-     * @todo peut être trouver un meilleur nom (displayPiece ?)
+     * @todo peut être trouver un meilleur nom (drawPiece ?)
      * @todo changer Cell pour Box
      */
     public void putPiece(String name, int cellNumber) {
@@ -116,6 +117,7 @@ public class GameBoard2D extends JPanel {
     /**
      * Convenience method.
      * @see Board#addCell(int, Color, Point, Dimension)
+     * @todo rename to addBox
      */
     public void addCell(int number, Color cache, Point reference, Dimension d) {
         board.addCell(number, cache, reference, d);
@@ -123,7 +125,8 @@ public class GameBoard2D extends JPanel {
 
     /**
      * Convenience method.
-     * @see Board#getCellNumber(Point) 
+     * @see Board#getCellNumber(Point)
+     * @todo rename to getBoxID
      */
     public int getCellNumber(Point point) {
         return board.getCellNumber(point);
