@@ -1,8 +1,7 @@
 = GameBoard2D
 
-GameBoard2D is a small java library to create all sorts of 2D games
-with a board and some pieces, like chess, checkers, peg solitaire,
-tic tac toe, etc.
+GameBoard2D is a small java graphic library to create all kind
+of board games in 2D.
 
 == Features
 
