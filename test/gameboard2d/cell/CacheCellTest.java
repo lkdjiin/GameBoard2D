@@ -1,5 +1,6 @@
 package gameboard2d.cell;
 
+import gameboard2d.box.CacheBox;
 import java.awt.Color;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class CacheCellTest {
 
-    CacheCell cc;
+    CacheBox cc;
 
     public CacheCellTest() {
     }
@@ -25,7 +26,7 @@ public class CacheCellTest {
 
     @Before
     public void setUp() {
-        cc = new CacheCell(123, new Color(10, 10, 10));
+        cc = new CacheBox(123, new Color(10, 10, 10));
     }
 
     @After
@@ -34,7 +35,7 @@ public class CacheCellTest {
 
     @Test
     public void testNumber() {
-        assertEquals(123, cc.number);
+        assertEquals(123, cc.id);
     }
 
     @Test

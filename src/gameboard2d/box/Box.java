@@ -1,11 +1,11 @@
-package gameboard2d.cell;
+package gameboard2d.box;
 
 import java.awt.*;
 
 /**
- * Represent a box of the board, referenced by its top-left corner.
+ * Represents a box of the board, referenced by its top-left corner.
  */
-public class Cell {
+public class Box {
 
     public Point point;
     public Dimension dimension;
@@ -15,7 +15,7 @@ public class Cell {
      * @param point
      * @param dimension
      */
-    public Cell(Point point, Dimension dimension) {
+    public Box(Point point, Dimension dimension) {
         this.point = point;
         this.dimension = dimension;
     }
@@ -28,7 +28,7 @@ public class Cell {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Cell other = (Cell) obj;
+        final Box other = (Box) obj;
         if (this.point != other.point && (this.point == null || !this.point.equals(other.point))) {
             return false;
         }

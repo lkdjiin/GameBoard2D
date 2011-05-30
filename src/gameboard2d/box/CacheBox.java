@@ -1,23 +1,23 @@
-package gameboard2d.cell;
+package gameboard2d.box;
 
 import java.awt.Color;
 
 /**
- * This class represent a cached area of the board.
- * @todo merge this class with Cell ?
+ * This class represents a cached area of the board.
+ * @todo merge this class with Box ?
  */
-public class CacheCell {
+public class CacheBox {
 
-    public int number;
+    public int id;
     public Color color;
 
     /**
      * Sole constructor.
-     * @param number the number of the box.
+     * @param id the id of the box.
      * @param color the color of the cached area.
      */
-    public CacheCell(int number, Color color) {
-        this.number = number;
+    public CacheBox(int id, Color color) {
+        this.id = id;
         this.color = color;
     }
 
@@ -29,8 +29,8 @@ public class CacheCell {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CacheCell other = (CacheCell) obj;
-        if (this.number != other.number) {
+        final CacheBox other = (CacheBox) obj;
+        if (this.id != other.id) {
             return false;
         }
         if (this.color != other.color && (this.color == null || !this.color.equals(other.color))) {
@@ -42,7 +42,7 @@ public class CacheCell {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.number;
+        hash = 89 * hash + this.id;
         hash = 89 * hash + (this.color != null ? this.color.hashCode() : 0);
         return hash;
     }

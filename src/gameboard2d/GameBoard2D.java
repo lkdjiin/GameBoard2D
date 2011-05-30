@@ -1,7 +1,7 @@
 package gameboard2d;
 
 import gameboard2d.board.Board;
-import gameboard2d.cell.Cell;
+import gameboard2d.box.Box;
 import gameboard2d.piece.Piece;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -39,7 +39,7 @@ public class GameBoard2D extends JPanel {
      * Return the Board of the game. For now, you can do all the stuff from
      * within GameBoard2D, so you don't really need this method.
      */
-    public Board board() {
+    public Board getBoard() {
         return board;
     }
 
@@ -83,25 +83,22 @@ public class GameBoard2D extends JPanel {
     /**
      * Display the board, without any pieces.
      * Useful to initialize your screen.
-     * @todo rename to drawBoard
      */
-    public void displayBoard() {
+    public void drawBoard() {
         Graphics2D g = offscreenImage.createGraphics();
-        g.drawImage(board.image(), 0, 0, null);
+        g.drawImage(board.getImage(), 0, 0, null);
         repaint();
     }
 
     /**
      * Display a piece on the board.
      * @param name the name of the piece to display
-     * @param cellNumber the cell in wich to display the piece
-     * @todo peut être trouver un meilleur nom (drawPiece ?)
-     * @todo changer Cell pour Box
+     * @param boxNumber the cell in wich to display the piece
      */
-    public void putPiece(String name, int cellNumber) {
+    public void drawPiece(String name, int boxNumber) {
         Graphics2D g = offscreenImage.createGraphics();
-        BufferedImage background = board.image();
-        Cell cell = board.getCell(cellNumber);
+        BufferedImage background = board.getImage();
+        Box cell = board.getBox(boxNumber);
         int x1 = cell.point.x;
         int y1 = cell.point.y;
         int x2 = x1 + cell.dimension.width;
@@ -116,20 +113,18 @@ public class GameBoard2D extends JPanel {
 
     /**
      * Convenience method.
-     * @see Board#addCell(int, Color, Point, Dimension)
-     * @todo rename to addBox
+     * @see Board#addBox(int, Color, Point, Dimension)
      */
-    public void addCell(int number, Color cache, Point reference, Dimension d) {
-        board.addCell(number, cache, reference, d);
+    public void addBox(int id, Color cache, Point reference, Dimension d) {
+        board.addBox(id, cache, reference, d);
     }
 
     /**
      * Convenience method.
-     * @see Board#getCellNumber(Point)
-     * @todo rename to getBoxID
+     * @see Board#getBoxId(Point)
      */
-    public int getCellNumber(Point point) {
-        return board.getCellNumber(point);
+    public int getBoxId(Point point) {
+        return board.getBoxId(point);
     }
 
     /**
