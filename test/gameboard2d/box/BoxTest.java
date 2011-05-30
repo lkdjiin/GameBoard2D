@@ -25,7 +25,7 @@ public class BoxTest {
 
     @Before
     public void setUp() {
-        box = new Box(new Point(111,222), Color.yellow, new Dimension(100, 200));
+        box = new Box(new Point(111,222), Color.yellow);
     }
 
     @After
@@ -44,21 +44,21 @@ public class BoxTest {
 
     @Test
     public void testNotEquals() {
-        Box b1 = new Box(new Point(111,999), Color.yellow, new Dimension(100, 200));
-        Box b2 = new Box(new Point(111,222), Color.red, new Dimension(100, 200));
+        Box b1 = new Box(new Point(111,999), Color.yellow);
+        Box b2 = new Box(new Point(111,222), Color.red);
         assertFalse(box.equals(b1));
         assertFalse(box.equals(b2));
     }
 
     @Test
     public void testEquals() {
-        Box b1 = new Box(new Point(111,222), Color.yellow, new Dimension(100, 200));
+        Box b1 = new Box(new Point(111,222), Color.yellow);
         assertEquals(b1, box);
     }
 
     @Test
     public void testHashCode() {
-        Box b1 = new Box(new Point(111,999), Color.yellow, new Dimension(100, 200));
+        Box b1 = new Box(new Point(111,999), Color.yellow);
         assertTrue(box.hashCode() != b1.hashCode());
     }
 

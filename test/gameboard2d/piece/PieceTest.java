@@ -40,4 +40,16 @@ public class PieceTest {
         assertNotNull(p);
     }
 
+    @Test
+    public void testPieceKnowItsWidth() throws IOException {
+        Piece p = new Piece(new File("test/images/circle.png"));
+        assertEquals(100, p.getWidth());
+    }
+
+    @Test
+    public void testPieceKnowItsHeight() throws IOException {
+        Piece p = new Piece(new File("test/images/circle.png"));
+        assertEquals(100, p.getHeight());
+    }
+
 }

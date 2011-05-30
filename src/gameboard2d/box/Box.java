@@ -26,34 +26,25 @@ import java.awt.*;
 public class Box {
 
     private Point point;
-    private Dimension dimension;
     private Color cacheColor;
 
     /**
      * Sole constructor.
      * @param point
      * @param color the color of the cached area.
-     * @param dimension
      */
-    public Box(Point point, Color color, Dimension dimension) {
+    public Box(Point point, Color color) {
         this.point = point;
         this.cacheColor = color;
-        this.dimension = dimension;
     }
 
     public Color getCacheColor() {
         return cacheColor;
     }
 
-    public Dimension getDimension() {
-        return dimension;
-    }
-
     public Point getPoint() {
         return point;
     }
-
-    
 
     @Override
     public boolean equals(Object obj) {
