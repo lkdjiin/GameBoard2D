@@ -69,6 +69,18 @@ public class BoardTest {
         assertTrue(board.boxes.containsValue(new Box(new Point(0,0), new Color(0, 1, 2), new Dimension(100,100))));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testMustNotAcceptTwoBoxesWithSameId() {
+        board.addBox(123, new Color(0, 1, 2), new Point(0,0), new Dimension(100,100));
+        board.addBox(123, new Color(9, 9, 9), new Point(9,9), new Dimension(200,200));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMustNotAcceptTwoBoxesWithSameCacheColor() {
+        board.addBox(123, Color.black, new Point(0,0), new Dimension(100,100));
+        board.addBox(456, Color.black, new Point(9,9), new Dimension(200,200));
+    }
+
     @Test
     public void testGetBoxId() {
         initializeCache();
