@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
  */
 public class Piece {
 
-    public BufferedImage image;
+    private BufferedImage image;
 
     /**
      * Sole constructor.
@@ -23,5 +23,8 @@ public class Piece {
         image = ImageIO.read(file);
     }
 
-
+    public BufferedImage getImage() {
+        return image;
+    }
+  
 }

@@ -90,19 +90,19 @@ public class GameBoard2D extends JPanel {
     /**
      * Display a piece on the board.
      * @param name the name of the piece to display
-     * @param boxNumber the cell in wich to display the piece
+     * @param boxId the box id in wich to display the piece
      */
-    public void drawPiece(String name, int boxNumber) {
+    public void drawPiece(String name, int boxId) {
         Graphics2D g = offscreenImage.createGraphics();
         BufferedImage background = board.getImage();
-        Box cell = board.getBox(boxNumber);
-        int x1 = cell.getPoint().x;
-        int y1 = cell.getPoint().y;
-        int x2 = x1 + cell.getDimension().width;
-        int y2 = y1 + cell.getDimension().height;
+        Box box = board.getBox(boxId);
+        int x1 = box.getPoint().x;
+        int y1 = box.getPoint().y;
+        int x2 = x1 + box.getDimension().width;
+        int y2 = y1 + box.getDimension().height;
         g.drawImage(background, x1, y1, x2, y2, x1, y1, x2, y2, null);
 
-        BufferedImage piece = pieces.get(name).image;
+        BufferedImage piece = pieces.get(name).getImage();
         g.drawImage(piece, x1, y1, null);
 
         repaint();
