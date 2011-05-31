@@ -32,13 +32,13 @@ public class GameBoard2D extends JPanel {
      * a second time, board data will be replaced.
      * @param boardFile the image of the board
      * @param cacheFile the image of the board's cache
-     * @param dimension the dimension of the board
      * @throws IOException if a file doesn't exist (or is unreadable, ...)
      */
-    public void setBoard(File boardFile, File cacheFile, Dimension dimension) throws IOException {
+    public void setBoard(File boardFile, File cacheFile) throws IOException {
         board = new Board(boardFile, cacheFile);
-        offscreenImage = new BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_ARGB);
-        setSize(dimension);
+        Dimension d = board.getDimension();
+        offscreenImage = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_ARGB);
+        setSize(d);
     }
 
     /**

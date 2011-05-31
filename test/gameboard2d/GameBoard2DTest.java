@@ -28,9 +28,7 @@ public class GameBoard2DTest {
     @Before
     public void setUp() throws IOException {
         gb2d = new GameBoard2D();
-        gb2d.setBoard(new File("test/images/ttt-board.png"),
-                new File("test/images/ttt-board-cache.png"),
-                new Dimension(300,300));
+        gb2d.setBoard(new File("test/images/ttt-board.png"), new File("test/images/ttt-board-cache.png"));
     }
 
     @After

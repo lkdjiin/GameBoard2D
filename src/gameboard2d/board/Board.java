@@ -56,6 +56,10 @@ public class Board {
         return boardImage;
     }
 
+    public Dimension getDimension() {
+        return new Dimension(boardImage.getWidth(), boardImage.getHeight());
+    }
+
     /**
      * Return the id of the box that is pointed to by point.
      * @param point the coordinate of the point for which you want to know the box's id.

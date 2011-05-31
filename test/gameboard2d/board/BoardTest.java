@@ -106,4 +106,9 @@ public class BoardTest {
         assertEquals(new Color(0, 1, 2), box.getCacheColor());
         assertEquals(new Point(0,0), box.getPoint());
     }
+
+    @Test
+    public void testGetDimension() {
+        assertEquals(new Dimension(300,300), board.getDimension());
+    }
 }
