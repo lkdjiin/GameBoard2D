@@ -21,16 +21,24 @@ public class GameBoard2D extends JPanel {
 
     /**
      * Create a GameBoard2D you can use throughout your project.
+     */
+    public GameBoard2D(){
+        pieces = new HashMap<String, Piece>();
+    }
+
+    /**
+     * Set <em>"the"</em> board of the game.
+     * There is only one board per game. If you call this method
+     * a second time, board data will be replaced.
      * @param boardFile the image of the board
      * @param cacheFile the image of the board's cache
      * @param dimension the dimension of the board
      * @throws IOException if a file doesn't exist (or is unreadable, ...)
      */
-    public GameBoard2D(File boardFile, File cacheFile, Dimension dimension) throws IOException {
+    public void setBoard(File boardFile, File cacheFile, Dimension dimension) throws IOException {
         board = new Board(boardFile, cacheFile);
-        setSize(dimension);
-        pieces = new HashMap<String, Piece>();
         offscreenImage = new BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_ARGB);
+        setSize(dimension);
     }
 
     /**

@@ -1,10 +1,6 @@
 package gameboard2d;
 
-import gameboard2d.board.Board;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import org.junit.After;
@@ -31,7 +27,8 @@ public class GameBoard2DTest {
 
     @Before
     public void setUp() throws IOException {
-        gb2d = new GameBoard2D(new File("test/images/ttt-board.png"),
+        gb2d = new GameBoard2D();
+        gb2d.setBoard(new File("test/images/ttt-board.png"),
                 new File("test/images/ttt-board-cache.png"),
                 new Dimension(300,300));
     }
