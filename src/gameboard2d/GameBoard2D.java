@@ -96,7 +96,7 @@ public class GameBoard2D extends JPanel {
     }
 
     /**
-     * Display a piece on the board.
+     * Display a piece on the board, deleting the background first.
      * @param name the name of the piece to display
      * @param boxId the box id in wich to display the piece
      */
@@ -112,6 +112,18 @@ public class GameBoard2D extends JPanel {
         int y2 = y1 + piece.getHeight();
 
         g.drawImage(background, x1, y1, x2, y2, x1, y1, x2, y2, null);
+        g.drawImage(piece, x1, y1, null);
+        repaint();
+    }
+
+    public void drawPieceOnTop(String name, int boxId) {
+        Graphics2D g = offscreenImage.createGraphics();
+        Box box = board.getBox(boxId);
+        BufferedImage piece = pieces.get(name).getImage();
+
+        int x1 = box.getPoint().x;
+        int y1 = box.getPoint().y;
+
         g.drawImage(piece, x1, y1, null);
         repaint();
     }
