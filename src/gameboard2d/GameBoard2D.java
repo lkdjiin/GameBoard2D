@@ -96,36 +96,41 @@ public class GameBoard2D extends JPanel {
     }
 
     /**
-     * Display a piece on the board, deleting the background first.
+     * Draw a piece on the board, deleting the background first.
      * @param name the name of the piece to display
      * @param boxId the box id in wich to display the piece
      */
     public void drawPiece(String name, int boxId) {
+        drawPiece(name, boxId, true);
+    }
+
+    /**
+     * Draw a piece on the board, without deleting the background first.
+     * @param name the name of the piece to display
+     * @param boxId the box id in wich to display the piece
+     */
+    public void drawPieceOnTop(String name, int boxId) {
+        drawPiece(name, boxId, false);
+    }
+
+    
+    private void drawPiece(String name, int boxId, boolean deleteBackgroundFirst) {
         Graphics2D g = offscreenImage.createGraphics();
-        BufferedImage background = board.getImage();
         Box box = board.getBox(boxId);
-        BufferedImage piece = pieces.get(name).getImage();
+        Piece piece = pieces.get(name);
 
-        int x1 = box.getPoint().x;
-        int y1 = box.getPoint().y;
-        int x2 = x1 + piece.getWidth();
-        int y2 = y1 + piece.getHeight();
-
-        g.drawImage(background, x1, y1, x2, y2, x1, y1, x2, y2, null);
-        g.drawImage(piece, x1, y1, null);
+        if(deleteBackgroundFirst) {
+            clearBackground(g, box.getPoint(), piece.getDimension());
+        }
+        g.drawImage(piece.getImage(), box.getPoint().x, box.getPoint().y, null);
         repaint();
     }
 
-    public void drawPieceOnTop(String name, int boxId) {
-        Graphics2D g = offscreenImage.createGraphics();
-        Box box = board.getBox(boxId);
-        BufferedImage piece = pieces.get(name).getImage();
-
-        int x1 = box.getPoint().x;
-        int y1 = box.getPoint().y;
-
-        g.drawImage(piece, x1, y1, null);
-        repaint();
+    private void clearBackground(Graphics2D g, Point p, Dimension d) {
+        BufferedImage background = board.getImage();
+        int x2 = p.x + d.width;
+        int y2 = p.y + d.height;
+        g.drawImage(background, p.x, p.y, x2, y2, p.x, p.y, x2, y2, null);
     }
 
     /**

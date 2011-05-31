@@ -1,9 +1,9 @@
 package gameboard2d.piece;
 
 import gameboard2d.GameBoard2D;
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import javax.imageio.ImageIO;
 
 /**
@@ -33,6 +33,10 @@ public class Piece {
 
     public int getHeight() {
         return image.getHeight();
+    }
+
+    public Dimension getDimension() {
+        return new Dimension(image.getWidth(), image.getHeight());
     }
   
 }
