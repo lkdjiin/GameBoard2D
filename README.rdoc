@@ -7,7 +7,12 @@ of board games in 2D.
 
 == Documentation
 
+There is a demo project at https://github.com/lkdjiin/TicTacToe that
+show you how to use this library.
+
 == Dependencies
+
+Java 1.6+
 
 === Developper's dependencies
 
