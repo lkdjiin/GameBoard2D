@@ -152,7 +152,7 @@ public class GameBoard2D extends JPanel {
     /**
      * Return the version of this library.
      */
-    public String getVersion() {
+    public static String getVersion() {
         return ApplicationVersion.VERSION;
     }
 

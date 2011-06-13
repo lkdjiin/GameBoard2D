@@ -65,6 +65,7 @@ public class Board {
      * @param point the coordinate of the point for which you want to know the box's id.
      * @return the box's id
      * @throws ArrayIndexOutOfBoundsException if the point is out of the board
+     * @todo replace ArrayIndexOutOfBoundsException by custom OutOfBoardException
      */
     public int getBoxId(Point point) {
         Color c = colorOfPoint(point);

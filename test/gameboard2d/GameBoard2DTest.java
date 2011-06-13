@@ -63,7 +63,7 @@ public class GameBoard2DTest {
 
     @Test
     public void testGetVersion() {
-        assertEquals(String.class, gb2d.getVersion().getClass());
+        assertEquals(String.class, GameBoard2D.getVersion().getClass());
     }
 
 }
